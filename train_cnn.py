@@ -314,9 +314,9 @@ for epoch in range(30):
         feature2 = net(v2)
         dist = F.cosine_similarity(feature1, feature2)
         correct_samples += torch.sum(dist * (
-            o > 0).type(torch.cuda.FloatTensor) > 0.5)[0].cpu().data.numpy()[0]
+            o > 0).type(torch.cuda.FloatTensor) > 0)[0].cpu().data.numpy()[0]
         correct_samples += torch.sum(dist * (
-            o < 0).type(torch.cuda.FloatTensor) < 0.5)[0].cpu().data.numpy()[0]
+            o < 0).type(torch.cuda.FloatTensor) < 0)[0].cpu().data.numpy()[0]
         total_samples += feature1.shape[0]
 
         loss = lossFunc(feature1, feature2, o)
